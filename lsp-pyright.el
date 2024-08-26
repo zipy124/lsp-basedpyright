@@ -54,6 +54,12 @@
   :type '(repeat string)
   :group 'lsp-pyright)
 
+(defcustom lsp-pyright-enable-library-code-types nil
+  "Enables searching through library code to determine types.
+Otherwise use stub files."
+  :type 'boolean
+  :group 'lsp-pyright)
+
 (defcustom lsp-pyright-disable-language-services nil
   "Disables all language services except for \"hover\"."
   :type 'boolean
@@ -213,6 +219,7 @@ Current LSP WORKSPACE should be passed in."
  `((,(concat lsp-pyright-fork ".disableLanguageServices") lsp-pyright-disable-language-services t)
    (,(concat lsp-pyright-fork ".disableOrganizeImports") lsp-pyright-disable-organize-imports t)
    (,(concat lsp-pyright-fork ".disableTaggedHints") lsp-pyright-disable-tagged-hints t)
+   (,(concat lsp-pyright-fork ".useLibraryCodeForTypes") lsp-pyright-enable-library-code-types t)
    ("python.analysis.autoImportCompletions" lsp-pyright-auto-import-completions t)
    ("python.analysis.diagnosticMode" lsp-pyright-diagnostic-mode)
    ("python.analysis.logLevel" lsp-pyright-log-level)
