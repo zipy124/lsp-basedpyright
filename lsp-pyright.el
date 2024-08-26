@@ -54,6 +54,16 @@
   :type '(repeat string)
   :group 'lsp-pyright)
 
+(defcustom lsp-pyright-type-checking-mode "all"
+  "Choose type checking mode."
+  :type '(choice
+          (const "off")
+          (const "basic")
+          (const "standard")
+          (const "strict")
+          (const "all"))
+  :group 'lsp-pyright)
+
 (defcustom lsp-pyright-enable-library-code-types nil
   "Enables searching through library code to determine types.
 Otherwise use stub files."
@@ -219,7 +229,8 @@ Current LSP WORKSPACE should be passed in."
  `((,(concat lsp-pyright-fork ".disableLanguageServices") lsp-pyright-disable-language-services t)
    (,(concat lsp-pyright-fork ".disableOrganizeImports") lsp-pyright-disable-organize-imports t)
    (,(concat lsp-pyright-fork ".disableTaggedHints") lsp-pyright-disable-tagged-hints t)
-   ("python.analysis.useLibraryCodeForTypes" lsp-pyright-enable-library-code-types t)
+   ("basedpyright.analysis.useLibraryCodeForTypes" lsp-pyright-enable-library-code-types t)
+   ("basedpyright.analysis.typeCheckingMode" lsp-pyright-type-checking-mode)
    ("python.analysis.autoImportCompletions" lsp-pyright-auto-import-completions t)
    ("python.analysis.diagnosticMode" lsp-pyright-diagnostic-mode)
    ("python.analysis.logLevel" lsp-pyright-log-level)
